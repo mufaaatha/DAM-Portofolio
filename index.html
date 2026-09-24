@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio of Daffa Atha Mucholik, Industrial Electrical Engineering student at Politeknik Elektronika Negeri Surabaya.">
+  <meta name="theme-color" content="#0B1F3A">
+  <title>Daffa Atha Mucholik | Electrical Engineering Portfolio</title>
+
+  <!-- ================= CUSTOMIZATION AREA =================
+    Bagian yang paling mudah diedit:
+    1.  Warna utama        -> tailwind.config di bawah (primary & accent)
+    2.  Nama, Tagline, About, Location  -> object SITE di <script> paling bawah
+    3.  Experience         -> array SITE.experience (script bawah)
+    4.  Projects           -> array SITE.projects (script bawah)
+    5.  Skills             -> object SITE.skills (script bawah)
+    6.  Email, WhatsApp, LinkedIn, GitHub -> SITE.contact (script bawah)
+    7.  Foto profil        -> simpan di images/profile.jpg (lihat HERO SECTION)
+    Semua teks yang masih berbentuk [EDIT ...] belum ada di data CV: isi sendiri.
+  ======================================================== -->
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Ganti warna tema di sini
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: '#0B1F3A', accent: '#C9A227', paper: '#FAF8F4' },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], display: ['Sora', 'Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+    .reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+  </style>
+</head>
+
+<body class="bg-paper font-sans text-slate-800 antialiased">
+
+  <!-- NAVBAR -->
+  <header id="navbar" class="sticky top-0 z-50 bg-paper/90 backdrop-blur transition-shadow">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4" aria-label="Main navigation">
+      <a href="#home" class="font-display text-lg font-semibold text-primary" data-name-short>DAM</a>
+      <ul id="menu-desktop" class="hidden gap-8 text-sm font-medium md:flex"></ul>
+      <button id="menu-btn" class="rounded-lg p-2 text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent md:hidden" aria-label="Open menu" aria-expanded="false">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+    <ul id="menu-mobile" class="hidden flex-col border-t border-slate-200 bg-paper px-5 py-2 text-base font-medium md:hidden"></ul>
+  </header>
+
+  <main>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-5 md:py-24">
+      <div class="md:col-span-3">
+        <p class="mb-3 text-sm font-medium text-accent" data-status></p>
+        <h1 class="font-display text-4xl font-bold leading-tight text-primary sm:text-5xl">Hi, I'm <span data-name></span></h1>
+        <!-- GANTI TAGLINE DI SINI (SITE.tagline di script bawah) -->
+        <p class="mt-5 max-w-xl text-lg text-slate-700" data-tagline></p>
+        <p class="mt-3 max-w-xl text-slate-600" data-intro></p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#projects" class="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">View My Projects</a>
+          <a href="#contact" class="rounded-lg border border-primary px-6 py-3 text-sm font-semibold text-primary transition hover:bg-primary hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="md:col-span-2">
+        <div class="relative mx-auto aspect-square w-64 overflow-hidden rounded-2xl bg-primary shadow-lg sm:w-72">
+          <!-- Gelombang sinus: dekorasi bertema teknik elektro -->
+          <svg class="absolute inset-0 h-full w-full text-accent/70" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M0 150 C25 90 50 90 75 150 S125 210 150 150 S185 100 200 130"/>
+            <path d="M0 165 C25 105 50 105 75 165 S125 225 150 165 S185 115 200 145" opacity=".4"/>
+          </svg>
+          <span class="absolute inset-0 flex items-center justify-center font-display text-6xl font-bold text-white/90" aria-hidden="true" data-initials></span>
+          <!-- GANTI FOTO PROFIL DI: images/profile.jpg -->
+          <img src="images/profile.jpg" alt="Portrait of Daffa Atha Mucholik" class="absolute inset-0 h-full w-full object-cover" onerror="this.remove()">
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT ME -->
+    <section id="about" class="bg-white py-20">
+      <div class="mx-auto grid max-w-6xl gap-12 px-5 md:grid-cols-5">
+        <div class="reveal md:col-span-3">
+          <h2 class="font-display text-3xl font-semibold text-primary">About Me</h2>
+          <div class="mt-6 max-w-prose space-y-4 leading-relaxed text-slate-700" id="about-text"></div>
+        </div>
+        <dl class="reveal space-y-5 rounded-2xl border border-slate-200 bg-paper p-6 md:col-span-2" id="about-facts"></dl>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="mx-auto max-w-6xl px-5 py-20">
+      <h2 class="reveal font-display text-3xl font-semibold text-primary">Experience</h2>
+      <p class="reveal mt-2 text-slate-600">Training, organization, and hands-on learning.</p>
+      <ol id="experience-list" class="mt-10 space-y-6 border-l-2 border-accent/50 pl-6"></ol>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="bg-white py-20">
+      <div class="mx-auto max-w-6xl px-5">
+        <h2 class="reveal font-display text-3xl font-semibold text-primary">Projects</h2>
+        <p class="reveal mt-2 text-slate-600">Selected work from 2024 to 2026.</p>
+        <div id="projects-grid" class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="mx-auto max-w-6xl px-5 py-20">
+      <h2 class="reveal font-display text-3xl font-semibold text-primary">My Skills</h2>
+      <div id="skills-groups" class="mt-10 grid gap-8 sm:grid-cols-2"></div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="bg-primary py-20 text-white">
+      <div class="mx-auto max-w-3xl px-5 text-center">
+        <h2 class="reveal font-display text-3xl font-semibold">Let's build something together.</h2>
+        <p class="reveal mt-3 text-slate-300">Open to internships and engineering opportunities. Reach me through any channel below.</p>
+        <div id="contact-links" class="mt-10 grid gap-3 text-left sm:grid-cols-2"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-primary/95 py-6 text-center text-sm text-slate-300">
+    <p>&copy; 2026 <span data-name></span>. All Rights Reserved.</p>
+  </footer>
+
+  <!-- ================= JAVASCRIPT =================
+    1) SITE  : semua data yang perlu Anda edit.
+    2) Render: mengubah data di atas menjadi HTML (tidak perlu diubah).
+    3) Navbar mobile, efek scroll, dan animasi fade-in.
+  ================================================== -->
+  <script>
+    // ---------- 1) DATA: EDIT DI SINI ----------
+    const SITE = {
+      name: 'Daffa Atha Mucholik',
+      short: 'PORTOFOLIO',
+      status: 'Electrical Engineering Student | Automation & Control Enthusiast',
+      // GANTI TAGLINE: kalimat ini hanya contoh sementara
+      tagline: 'Designing, Simulating, and Building Reliable Electrical Systems.',
+      intro: 'Industrial Electrical Engineering student with project experience in Power electronics, Embedded Systems, PCB design, and PLC Programming.',
+
+      about: [
+        'I am an Industrial Electrical Engineering student at Politeknik Elektronika Negeri Surabaya (PENS), studying since 2024. My projects so far cover DC-DC converters, PCB design, Arduino and PIC32 microcontrollers, IoT monitoring, and electrical installation modeling in AutoCAD.',
+        'I have also completed training in PLC programming with CX-Programmer and PCB layout with Eagle. I am preparing for a career as an Electrical Engineer, where I can design, simulate, and deliver reliable electrical and automation systems.',
+        '"I aim to build a career in industrial automation and control engineering by continuously developing my technical skills and applying them to real-world engineering challenges.'
+      ],
+      facts: [
+        ['Education', 'Politeknik Elektronika Negeri Surabaya (2024 - present)'],
+        ['Field of Study', 'Industrial Electrical Engineering'],
+        ['Location', 'Blitar, East Java, Indonesia'],
+        ['Interests', 'Power electronics, embedded systems, PLC and industrial automation'],
+        ['Languages', 'Indonesian (Native), English (Intermediate)']
+      ],
+
+      // Timeline pengalaman. Tambah/hapus blok { } sesuai kebutuhan.
+      experience: [
+        {
+          role: 'PLC Training Participant', org: 'HIMA ELIN, PENS', date: '2025',
+          desc: 'Training on PLC programming using CX-Programmer.', points: []
+        },
+        {
+          role: 'PCB Layout Training Participant', org: 'HIMA ELIN, PENS', date: '2025',
+          desc: 'Training on PCB layout design using EAGLE.', points: []
+        },
+        {
+          role: 'Participant, Student Skills & Management Training (LKMM TD)', org: 'Industrial Electrical Engineering, PENS', date: '2024',
+          desc: 'Basic-level student skills and management training.', points: []
+        },
+        {
+          // Tahun di CV tertulis 2023, padahal kuliah mulai 2024. Mohon dicek.
+          role: 'Participant, Student Skills & Management Training (LKMM Pra-TD)', org: 'Department of Electrical Engineering, PENS', date: '2024',
+          desc: 'Pre-basic-level student skills and management training.', points: []
+        },
+        
+         
+        
+      ],
+
+      // Deskripsi hanya berdasarkan judul project di CV. Lengkapi role, tools, dan link.
+      projects: [
+        { title: 'DC-DC Boost Converter with Variable Voltage', desc: 'Comprehensive development of a DC-DC boost converter with adjustable output voltage.', tools: ['Autodesk EAGLE'], role: 'Leader of Project', year: '2026', link: '#' },
+        { title: 'Automatic Cat Feeder with IoT Monitoring', desc: 'Automatic cat feeder with monitoring and IoT connectivity based on a PIC32 microcontroller.', tools: ['PIC32', 'IoT'], role: 'Electrician', year: '2026', link: '#' },
+        { title: 'Voice-Controlled Lamp System', desc: 'Voice-command lamp control with current sensor feedback, built on Arduino Uno.', tools: ['Arduino Uno', 'PSIM','Proteus 8 professional'], role: 'Leader of Project', year: '2025', link: '#' },
+        { title: 'PWM Signal Generator PCB', desc: 'Development and PCB design of a PWM signal generator using Autodesk Eagle.', tools: ['Autodesk Eagle'], role: 'Leader of Project', year: '2025', link: '#' },
+        { title: 'Residential Electrical Infrastructure Model', desc: 'Design and modeling of a residential electrical installation in AutoCAD 2D and 3D.', tools: ['AutoCAD 2D & 3D'], role: 'leader of Project', year: '2024', link: '#' }
+      ],
+
+      // Hanya skill yang ada di CV dan proyek. Soft skills adalah usulan: sesuaikan.
+      skills: {
+        'Power Electronics & Power Systems': ['DC-DC Boost Converter', 'PWM', 'PSIM', 'ETAP'],
+        'Automation & Control': ['PLC', 'Siemens TIA Portal V17', 'Omron CX-Programmer'],
+        'Embedded Systems & IoT': ['Arduino Uno', 'PIC32', 'STM32CubeIDE', 'IoT Monitoring'],
+        'Design & Simulation Tools': ['Autodesk Eagle', 'AutoCAD', 'Proteus 8 Professional', 'MATLAB'],
+        'Software': ['Microsoft Word', 'Excel', 'PowerPoint'],
+        'Soft Skills': ['Problem Solving', 'Teamwork', 'Technical Documentation']
+      },
+
+      // Isi kontak. Kosongkan href untuk yang belum ada.
+      contact: {
+        email: 'mufaaatha@gmail.com',
+        whatsapp: '6285804318008',            // format internasional, tanpa + atau spasi
+        linkedin: 'https://www.linkedin.com/in/daffaatha94/',                         // [YOUR LINKEDIN] contoh: 'https://linkedin.com/in/username'
+        location: 'Blitar, East Java, Indonesia'
+      }
+    };
+
+    // ---------- 2) RENDER (tidak perlu diedit) ----------
+    const $ = (s) => document.querySelector(s);
+    const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const pill = 'rounded-full border border-slate-200 bg-white px-3 py-1 text-sm text-slate-700';
+    const card = 'reveal rounded-2xl border border-slate-200 bg-paper p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md';
+
+    document.querySelectorAll('[data-name]').forEach((e) => (e.textContent = SITE.name));
+    document.querySelector('[data-name-short]').textContent = SITE.short;
+    $('[data-status]').textContent = SITE.status;
+    $('[data-tagline]').textContent = SITE.tagline;
+    $('[data-intro]').textContent = SITE.intro;
+    $('[data-initials]').textContent = SITE.name.split(' ').filter((_, i, a) => i === 0 || i === a.length - 1).map((w) => w[0]).join('');
+
+    const nav = ['Home', 'About', 'Experience', 'Projects', 'Skills', 'Contact'];
+    const linkCls = 'block rounded py-3 text-slate-700 transition hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent md:py-0';
+    const navHTML = nav.map((n) => `<li><a class="${linkCls}" href="#${n.toLowerCase()}">${n}</a></li>`).join('');
+    $('#menu-desktop').innerHTML = navHTML;
+    $('#menu-mobile').innerHTML = navHTML;
+
+    $('#about-text').innerHTML = SITE.about.map((p) => `<p>${esc(p)}</p>`).join('');
+    $('#about-facts').innerHTML = SITE.facts.map(([k, v]) => `<div><dt class="text-sm font-semibold text-primary">${esc(k)}</dt><dd class="mt-0.5 text-slate-700">${esc(v)}</dd></div>`).join('');
+
+    $('#experience-list').innerHTML = SITE.experience.map((e) => `
+      <li class="reveal relative">
+        <span class="absolute -left-[33px] top-2 h-3 w-3 rounded-full bg-accent ring-4 ring-paper"></span>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="font-semibold text-primary">${esc(e.role)}</h3>
+            <span class="text-sm text-slate-500">${esc(e.date)}</span>
+          </div>
+          <p class="text-sm font-medium text-accent">${esc(e.org)}</p>
+          <p class="mt-2 text-slate-700">${esc(e.desc)}</p>
+          ${e.points.length ? `<ul class="mt-2 list-disc space-y-1 pl-5 text-slate-700">${e.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>` : ''}
+        </article>
+      </li>`).join('');
+
+    $('#projects-grid').innerHTML = SITE.projects.map((p) => `
+      <article class="${card} flex flex-col">
+        <p class="text-sm text-slate-500">${esc(p.year)}</p>
+        <h3 class="mt-1 font-display text-lg font-semibold text-primary">${esc(p.title)}</h3>
+        <p class="mt-2 flex-1 text-slate-700">${esc(p.desc)}</p>
+        <p class="mt-4 text-sm text-slate-600"><span class="font-semibold text-primary">Role:</span> ${esc(p.role)}</p>
+        <div class="mt-3 flex flex-wrap gap-2">${p.tools.map((t) => `<span class="${pill}">${esc(t)}</span>`).join('')}</div>
+        <!-- GANTI LINK PROJECT DI SINI (SITE.projects[].link) -->
+        <a href="${esc(p.link)}" class="mt-5 inline-flex w-fit rounded-lg border border-primary px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">View Project</a>
+      </article>`).join('');
+
+    $('#skills-groups').innerHTML = Object.entries(SITE.skills).map(([g, items]) => `
+      <div class="reveal">
+        <h3 class="mb-3 font-semibold text-primary">${esc(g)}</h3>
+        <div class="flex flex-wrap gap-2">${items.map((s) => `<span class="${pill}">${esc(s)}</span>`).join('')}</div>
+      </div>`).join('');
+
+    const c = SITE.contact;
+    const contactItems = [
+      ['Email', c.email || '[YOUR EMAIL]', c.email && `mailto:${c.email}`],
+      ['WhatsApp', c.whatsapp ? '+' + c.whatsapp : '[YOUR WHATSAPP]', c.whatsapp && `https://wa.me/${c.whatsapp}`],
+      ['LinkedIn', c.linkedin || '[YOUR LINKEDIN]', c.linkedin],
+      ['Location', c.location || '[EDIT DI SINI]', null]
+    ];
+    const itemCls = 'block rounded-xl border border-white/15 bg-white/5 p-4 transition';
+    $('#contact-links').innerHTML = contactItems.map(([label, text, href]) => {
+      const inner = `<span class="block text-sm text-accent">${label}</span><span class="mt-0.5 block break-words">${esc(text)}</span>`;
+      return href
+        ? `<a href="${esc(href)}" target="_blank" rel="noopener" class="${itemCls} hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">${inner}</a>`
+        : `<div class="${itemCls}">${inner}</div>`;
+    }).join('');
+
+    // ---------- 3) INTERAKSI ----------
+    // Menu hamburger untuk layar kecil
+    const btn = $('#menu-btn'), mobile = $('#menu-mobile');
+    const setMenu = (open) => {
+      mobile.classList.toggle('hidden', !open);
+      mobile.classList.toggle('flex', open);
+      btn.setAttribute('aria-expanded', open);
+    };
+    btn.addEventListener('click', () => setMenu(mobile.classList.contains('hidden')));
+    mobile.addEventListener('click', (e) => { if (e.target.tagName === 'A') setMenu(false); });
+
+    // Bayangan navbar saat halaman di-scroll
+    const navbar = $('#navbar');
+    const onScroll = () => navbar.classList.toggle('shadow-md', window.scrollY > 10);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Fade-in halus saat elemen masuk layar
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('show'); io.unobserve(en.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>
